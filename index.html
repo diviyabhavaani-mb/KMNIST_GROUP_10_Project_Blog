@@ -1,78 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>KMNIST Character Classification Project</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; max-width: 900px; }
-        h1, h2, h3 { color: #333; }
-        a { font-weight: bold; text-decoration: none; color: #1a0dab; }
-        a:hover { text-decoration: underline; }
-        img { max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ccc; padding: 2px; }
-        .section { margin-bottom: 50px; }
-        ul { margin-left: 20px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KMNIST Character Classification</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #1f4287;
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+}
+header h1 { margin-bottom: 5px; }
+header p { margin: 3px 0; font-size: 0.9em; }
+.container { max-width: 1000px; margin: 20px auto; padding: 0 20px; }
+section { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+h2 { color: #1f4287; }
+figure { text-align: center; margin: 15px 0; }
+figcaption { font-size: 0.9em; color: #555; }
+table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+table, th, td { border: 1px solid #ddd; }
+th, td { padding: 8px; text-align: center; }
+th { background-color: #1f4287; color: white; }
+a { text-decoration: none; color: black; font-weight: bold; }
+a:hover { color: #1f4287; }
+</style>
 </head>
 <body>
 
-    <h1>KMNIST Character Classification Project</h1>
+<header>
+<h1>KMNIST Character Classification with Logistic Regression & CNNs</h1>
+<p>Noureddin Lutfi | Aditya Rajiv | Nuo Chen | Diviya Bhavaani</p>
+<p>Texas A&M University</p>
+<p><a href="mailto:noorlutfe@tamu.edu">noorlutfe@tamu.edu</a> | <a href="mailto:adiman@tamu.edu">adiman@tamu.edu</a> | <a href="mailto:nuochen@tamu.edu">nuochen@tamu.edu</a> | <a href="mailto:diviyabhavaani@tamu.edu">diviyabhavaani@tamu.edu</a></p>
+</header>
 
-    <div class="section">
-        <h2>Project Overview</h2>
-        <p>This project explores handwritten Japanese character recognition using the <strong>Kuzushiji-MNIST (KMNIST)</strong> dataset. The main objectives were to:</p>
-        <ul>
-            <li>Compare classical and deep learning approaches for character classification.</li>
-            <li>Understand the impact of CNN architectures and hyperparameter tuning.</li>
-            <li>Explore few-shot and metric learning for low-data regimes.</li>
-        </ul>
-        <p>Models implemented include:</p>
-        <ul>
-            <li>Multinomial Logistic Regression (baseline)</li>
-            <li>Simple CNN</li>
-            <li>Improved CNN with residual blocks, batch normalization, and dropout</li>
-            <li>Siamese network for one-shot classification</li>
-        </ul>
-    </div>
+<div class="container">
 
-    <div class="section">
-        <h2>Results Summary</h2>
-        <ul>
-            <li>Logistic Regression: ~60% test accuracy</li>
-            <li>Simple CNN: ~93% test accuracy</li>
-            <li>Improved CNN (tuned): ~97% test accuracy</li>
-            <li>Siamese one-shot model: ~77.7% accuracy with one support image per class</li>
-        </ul>
-        <p>Confusion matrices and misclassified examples reveal that remaining errors are mostly visually ambiguous characters.</p>
-        <!-- Placeholder for confusion matrix -->
-        <img src="confusion_matrix.png" alt="Confusion Matrix">
-        <!-- Placeholder for training plots -->
-        <img src="training_plot.png" alt="Training Accuracy and Loss">
-    </div>
+<section>
+<h2>Abstract</h2>
+<p>This project studies handwritten Japanese character recognition on the KMNIST dataset. We compare multinomial logistic regression and several CNN architectures, with the tuned CNN achieving ~97% accuracy. Confusion matrices show most errors are visually ambiguous characters, highlighting the benefits of CNN representation learning and validation-based tuning.</p>
+</section>
 
-    <div class="section">
-        <h2>Project Code</h2>
-        <p>All code, notebooks, and trained models are publicly available at our 
-        <a href="https://github.com/adimantamu/ECEN_Data_Mining_Project_Group10" target="_blank">GitHub repository</a>.</p>
-    </div>
+<section>
+<h2>Introduction</h2>
+<p>Handwritten character classification is a standard benchmark. KMNIST replaces MNIST digits with cursive Japanese Kuzushiji characters, making it challenging. We investigate logistic regression vs CNNs and the impact of hyperparameter tuning.</p>
+</section>
 
-    <div class="section">
-        <h2>Full Report</h2>
-        <p>The complete project report is accessible online: 
-        <a href="https://www.overleaf.com/project/69016ec3e24401e7e034fea3" target="_blank">Overleaf Report</a>.</p>
-    </div>
+<section>
+<h2>Methodology</h2>
+<p>We implemented Simple CNN, ResNet-like CNN, and an Improved CNN with batch normalization and dropout. Training and hyperparameter tuning details are included.</p>
+<figure>
+<img src="images/kmnist_samples.png" alt="KMNIST samples" width="600">
+<figcaption>Example KMNIST images from each class.</figcaption>
+</figure>
+</section>
 
-    <div class="section">
-        <h2>Visual Summary</h2>
-        <p>Below are example visuals illustrating the CNN architecture and training performance:</p>
-        <!-- Placeholder images for visual summary -->
-        <img src="cnn_architecture.png" alt="CNN Architecture Diagram">
-        <img src="training_plot.png" alt="Training Loss and Accuracy">
-    </div>
+<section>
+<h2>Results</h2>
+<table>
+<tr><th>Model</th><th>Accuracy</th></tr>
+<tr><td>Logistic Regression</td><td>60%</td></tr>
+<tr><td>Simple CNN</td><td>93%</td></tr>
+<tr><td>ResNet-like CNN</td><td>94%</td></tr>
+<tr><td>Improved CNN</td><td>96.7%</td></tr>
+<tr><td>Tuned Improved CNN</td><td>97%</td></tr>
+</table>
+<figure>
+<img src="images/confusion_matrix.png" alt="Confusion Matrix" width="600">
+<figcaption>Confusion matrix for Tuned Improved CNN.</figcaption>
+</figure>
+</section>
 
-    <div class="section">
-        <h2>Conclusion</h2>
-        <p>The experiments show that CNN-based models significantly outperform linear classifiers on KMNIST. Few-shot and metric learning approaches, like the Siamese network, help bridge the gap when only very few labeled samples are available. For full details and code, see the links above.</p>
-    </div>
+<section>
+<h2>Research Extension: Few-Shot & Metric Learning</h2>
+<p>We evaluated a Simple CNN on K = 1,5,10 labeled samples per class and a Siamese network for one-shot classification. The Siamese model achieved 77.7% accuracy with only one support image per class.</p>
+</section>
 
+<section>
+<h2>Conclusion & Future Work</h2>
+<p>The tuned CNN achieved ~97% test accuracy. Future work includes data augmentation, deeper networks, and advanced regularization techniques.</p>
+<p>All code and trained models are available at <a href="https://github.com/adimantamu/ECEN_Data_Mining_Project_Group10">GitHub repository</a>. A summary and visualizations are available as a <a href="https://diviyabhavaani-mb.github.io/KMNIST_GROUP_10_Project_Blog/">Project Blog Post</a>. The report is at <a href="https://www.overleaf.com/project/69016ec3e24401e7e034fea3">Overleaf link</a>.</p>
+</section>
+
+</div>
 </body>
 </html>
