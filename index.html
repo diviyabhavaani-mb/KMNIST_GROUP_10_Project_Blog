@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KMNIST Character Classification Project</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; max-width: 900px; }
+        h1, h2, h3 { color: #333; }
+        a { font-weight: bold; text-decoration: none; color: #1a0dab; }
+        a:hover { text-decoration: underline; }
+        img { max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ccc; padding: 2px; }
+        .section { margin-bottom: 50px; }
+        ul { margin-left: 20px; }
+    </style>
+</head>
+<body>
+
+    <h1>KMNIST Character Classification Project</h1>
+
+    <div class="section">
+        <h2>Project Overview</h2>
+        <p>This project explores handwritten Japanese character recognition using the <strong>Kuzushiji-MNIST (KMNIST)</strong> dataset. The main objectives were to:</p>
+        <ul>
+            <li>Compare classical and deep learning approaches for character classification.</li>
+            <li>Understand the impact of CNN architectures and hyperparameter tuning.</li>
+            <li>Explore few-shot and metric learning for low-data regimes.</li>
+        </ul>
+        <p>Models implemented include:</p>
+        <ul>
+            <li>Multinomial Logistic Regression (baseline)</li>
+            <li>Simple CNN</li>
+            <li>Improved CNN with residual blocks, batch normalization, and dropout</li>
+            <li>Siamese network for one-shot classification</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Results Summary</h2>
+        <ul>
+            <li>Logistic Regression: ~60% test accuracy</li>
+            <li>Simple CNN: ~93% test accuracy</li>
+            <li>Improved CNN (tuned): ~97% test accuracy</li>
+            <li>Siamese one-shot model: ~77.7% accuracy with one support image per class</li>
+        </ul>
+        <p>Confusion matrices and misclassified examples reveal that remaining errors are mostly visually ambiguous characters.</p>
+        <!-- Placeholder for confusion matrix -->
+        <img src="confusion_matrix.png" alt="Confusion Matrix">
+        <!-- Placeholder for training plots -->
+        <img src="training_plot.png" alt="Training Accuracy and Loss">
+    </div>
+
+    <div class="section">
+        <h2>Project Code</h2>
+        <p>All code, notebooks, and trained models are publicly available at our 
+        <a href="https://github.com/adimantamu/ECEN_Data_Mining_Project_Group10" target="_blank">GitHub repository</a>.</p>
+    </div>
+
+    <div class="section">
+        <h2>Full Report</h2>
+        <p>The complete project report is accessible online: 
+        <a href="https://www.overleaf.com/project/69016ec3e24401e7e034fea3" target="_blank">Overleaf Report</a>.</p>
+    </div>
+
+    <div class="section">
+        <h2>Visual Summary</h2>
+        <p>Below are example visuals illustrating the CNN architecture and training performance:</p>
+        <!-- Placeholder images for visual summary -->
+        <img src="cnn_architecture.png" alt="CNN Architecture Diagram">
+        <img src="training_plot.png" alt="Training Loss and Accuracy">
+    </div>
+
+    <div class="section">
+        <h2>Conclusion</h2>
+        <p>The experiments show that CNN-based models significantly outperform linear classifiers on KMNIST. Few-shot and metric learning approaches, like the Siamese network, help bridge the gap when only very few labeled samples are available. For full details and code, see the links above.</p>
+    </div>
+
+</body>
+</html>
